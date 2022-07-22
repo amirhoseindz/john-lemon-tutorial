@@ -16,8 +16,7 @@ public class PlayerMovement : MonoBehaviour
         m_Rigidbody = GetComponent<Rigidbody> ();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate ()
     {
         float horizontal = Input.GetAxis ("Horizontal");
         float vertical = Input.GetAxis ("Vertical");
@@ -32,6 +31,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void OnAnimatorMove ()
     {
-
+        m_Rigidbody.MovePosition(m_Rigidbody.position + m_Movement * m_Animator.deltaPosition.magnitude);
+        m_Rigidbody.MoveRotation (m_Rotation);
     }
 }
